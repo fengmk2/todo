@@ -6,7 +6,7 @@
 
 ## Install
 
-    $ npm install express mysql
+    $ npm install express ejs mysql
     
 ## Run
     
