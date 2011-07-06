@@ -4,6 +4,7 @@ var config = require('../config')
 
 exports.index = function(req, res) {
 	db.query('select * from todo order by finished asc, id asc', function(err, rows) {
+		if(err) return next(err);
 		res.render('index', {todos: rows});
 	});
 };
