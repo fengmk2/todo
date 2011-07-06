@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= config.site_name %></title>
+<link href="/styles/reset.css" rel="stylesheet" type="text/css" />
+<link href="/styles/index/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="page">
+    <div class="header box">
+        <h1><a href="/"><%= config.site_name %></a></h1>
+    </div>
+
+    <div class="main box">
+
+    <%- body %>
+    
+    </div>
+    
+    <div class="foot">
+        Copyright&copy; <%= config.site_name %>
+        <a href="http://cnodejs.org/">CNode</a>
+        <br />
+        修改自 <a href="http://simple-is-better.com/news/309">simple-todo: 一个简易的 todo 程序 - web.py 中文教程</a>
+        from <a href="http://simple-is-better.com/">Python.cn(news, jobs)</a>
+    </div>
+
+</div>
+</body>
+</html>
