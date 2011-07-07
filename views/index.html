@@ -19,7 +19,8 @@
                                 <a href="/todo/<%- todo.id%>/finish?status=no">恢复</a>,
                             <% } %>
                             <a href="/todo/<%- todo.id%>/edit">修改</a>,
-                            <a href="/todo/<%- todo.id%>/delete" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+                            <a href="/todo/<%- todo.id%>/delete" 
+                                onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
                         </li>
                     <% } %>
                 </ul>

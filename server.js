@@ -20,6 +20,9 @@ app.set("view engine", "html");
 app.set("views", __dirname + '/views');
 app.register("html", ejs);
 
+/**
+ * Routing
+ */
 app.get('/', todo.index);
 app.post('/todo/new', todo.new);
 app.get('/todo/:id', todo.view);
