@@ -2,13 +2,24 @@
 var express = require('express')
   , ejs = require('ejs')
   , config = require('./config')
-  , todo = require('./controllers/todo');
+  , todo = require('./controllers/todo')
+  , csrf = require('./lib/csrf');
 
 var app = express.createServer();
 app.use(express.static(__dirname + '/public', {maxAge: 3600000 * 24 * 30}));
 app.use(express.cookieParser());
 app.use(express.bodyParser());
-
+app.use(express.session({
+	secret: config.session_secret
+}));
+/**
+ * Fixed CSRF
+ *  add '<input type="hidden" name="csrf" value="<%- it.csrf %>" />' to form
+ */
+app.use(csrf.check());
+app.dynamicHelpers({
+    csrf: csrf.token
+});
 app.helpers({
 	config: config
 });

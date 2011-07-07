@@ -3,6 +3,7 @@ exports.port = 8080;
 exports.email='fengmk2@gmail.com';
 exports.site_name = 'Node TODO';
 exports.site_desc = '';
+exports.session_secret = 'tsoedsosisession_secretonsheecfrxedta';
 
 var db_options = {
 	host: 'localhost',

@@ -29,6 +29,7 @@
             <div class="box post">
                 <h2>新增</h2>
                 <form action="/todo/new" method="post" id="post_new">
+                    <input type="hidden" name="csrf" value="<%- it.csrf %>" />
                     <p><input type="text" name="title" class="long_txt" /></p>
                     <p><input type="submit" class="submit" value="添加" /></p>
                 </form>
