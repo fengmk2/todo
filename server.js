@@ -10,7 +10,7 @@ app.use(express.static(__dirname + '/public', {maxAge: 3600000 * 24 * 30}));
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.session({
-	secret: config.session_secret
+    secret: config.session_secret
 }));
 /**
  * Fixed CSRF
@@ -21,7 +21,7 @@ app.dynamicHelpers({
     csrf: csrf.token
 });
 app.helpers({
-	config: config
+    config: config
 });
 
 /**
