@@ -5,7 +5,9 @@ exports.site_name = 'Node TODO';
 exports.site_desc = '';
 exports.session_secret = 'tsoedsosisession_secretonsheecfrxedta';
 
-var db_options = {host: 'localhost',port: 3306,
+var db_options = {
+    host: 'localhost',
+    port: 3306,
     user: 'root',
     password: '123456',
     database: 'todo'

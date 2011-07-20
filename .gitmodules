@@ -1,0 +1,18 @@
+[submodule "node_modules/mysql"]
+	path = node_modules/mysql
+	url = git://github.com/felixge/node-mysql.git
+[submodule "node_modules/connect"]
+	path = node_modules/connect
+	url = git://github.com/senchalabs/connect.git
+[submodule "node_modules/ejs"]
+	path = node_modules/ejs
+	url = git://github.com/visionmedia/ejs.git
+[submodule "node_modules/express"]
+	path = node_modules/express
+	url = git://github.com/visionmedia/express.git
+[submodule "node_modules/mime"]
+	path = node_modules/mime
+	url = git://github.com/bentomas/node-mime.git
+[submodule "node_modules/qs"]
+	path = node_modules/qs
+	url = git://github.com/visionmedia/node-querystring.git
