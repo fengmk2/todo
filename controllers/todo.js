@@ -2,7 +2,7 @@
 var config = require('../config')
   , db = config.db;
 
-exports.index = function(req, res) {
+exports.index = function(req, res, next) {
     db.query('select * from todo order by finished asc, id asc limit 50', function(err, rows) {
         if(err) return next(err);
         res.render('index', {todos: rows});

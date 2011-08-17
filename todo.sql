@@ -29,3 +29,13 @@ INSERT INTO `todo` VALUES ('6', '增加协作功能，增加用户功能，可�
 INSERT INTO `todo` VALUES ('7', '不直接删除，改为完成，标示为该条事项已完成显示在最下方', '0', '2011-06-03 06:09:41');
 INSERT INTO `todo` VALUES ('8', '这是一条测试', '1', '2011-06-04 23:00:47');
 INSERT INTO `todo` VALUES ('9', '这是一条测试2', '1', '2011-06-04 23:01:31');
+
+
+CREATE TABLE `status` (
+  `id` int(11) NOT NULL auto_increment,
+  `text` varchar(300) default NULL,
+  `created_at` datetime default NULL,
+  `user_name` varchar(200),
+  `json` longtext,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
