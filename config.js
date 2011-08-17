@@ -13,7 +13,7 @@ var db_options = {
     database: 'todo'
 };
 
-var db = exports.db = new require('mysql').Client(db_options);
+var db = exports.db = new require('mysql').createClient(db_options);
 db.connect(function(err) {
     if(err) {
         console.error('connect db ' + db.host + ' error: ' + err);
