@@ -1,28 +1,16 @@
+/*!
+ * todo - config.js
+ * Copyright(c) 2012 fengmk2 <fengmk2@gmail.com>
+ * MIT Licensed
+ */
 
-exports.port = 8080;
-exports.email='fengmk2@gmail.com';
+"use strict";
+
+exports.debug = true;
+exports.port = 3000;
+exports.email = 'fengmk2@gmail.com';
 exports.site_name = 'Node TODO';
-exports.site_desc = '';
-exports.session_secret = 'tsoedsosisession_secretonsheecfrxedta';
+exports.site_desc = 'Very simple todo, demo for connect web dev.';
+exports.session_secret = 'todo session secret';
 
-var db_options = {
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: '123456',
-    database: 'todo'
-};
-
-var mysql = new require('mysql'), db = null;
-if(mysql.createClient) {
-    db = mysql.createClient(db_options);
-} else {
-    db = new mysql.Client(db_options);
-    db.connect(function(err) {
-        if(err) {
-            console.error('connect db ' + db.host + ' error: ' + err);
-            process.exit();
-        }
-    });
-}
-exports.db = db;
+exports.db = 'mongodb://127.0.0.1/todo_dev';

@@ -1,5 +1,30 @@
 {
-    "name" : "todo",
-    "main" : "./server.js"
+  "private": true,
+  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.github.com/)",
+  "name": "todo",
+  "description": "Very simple todo, demo for connect web dev.",
+  "version": "0.2.0",
+  "homepage": "http://github.com/fengmk2/todo",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fengmk2/todo.git"
+  },
+  "main": "server.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "dependencies": {
+    "connect": "1.x || >= 2.2.0",
+    "connect-render": ">=0.1.4",
+    "urlrouter": ">=0.2.0",
+    "mongoskin": ">=0.3.6"
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">= 0.6"
+  }
 }
-

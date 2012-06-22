@@ -1,69 +1,90 @@
+/*!
+ * todo - controllers/todo.js
+ * Copyright(c) 2012 fengmk2 <fengmk2@gmail.com>
+ * MIT Licensed
+ */
 
-var config = require('../config')
-  , db = config.db;
+"use strict";
 
-exports.index = function(req, res, next) {
-    db.query('select * from todo order by finished asc, id asc limit 50', function(err, rows) {
-        if(err) return next(err);
-        res.render('index', {todos: rows});
-    });
-};
+/**
+ * Module dependencies.
+ */
 
-exports.new = function(req, res, next) {
-    var title = req.body.title || '';
-    title = title.trim();
-    if(!title) {
-        return res.render('error', {message: '标题是必须的'});
+var config = require('../config');
+var db = require('../common/db');
+
+exports.index = function (req, res, next) {
+  db.todo.findItems({}, { sort: {_id: 1, finished: 1}}, function (err, rows) {
+    if (err) {
+      return next(err);
     }
-    db.query('insert into todo set title=?, post_date=now()', [title], function(err, result) {
-        if(err) return next(err);
-        res.redirect('/');
-    });
+    res.render('index.html', {todos: rows});
+  });
 };
 
-exports.view = function(req, res, next) {
+exports.new = function (req, res, next) {
+  var title = req.body.title || '';
+  title = title.trim();
+  if (!title) {
+    return res.render('error.html', {message: '标题是必须的'});
+  }
+  db.todo.save({title: title, post_date: new Date()}, function (err, row) {
+    if (err) {
+      return next(err);
+    }
     res.redirect('/');
+  });
 };
 
-exports.edit = function(req, res, next) {
-    var id = req.params.id;
-    db.query('select * from todo where id=?', [id], function(err, rows) {
-        if(err) return next(err);
-        if(rows && rows.length > 0) {
-            var row = rows[0];
-            res.render('todo/edit', {todo: row});
-        } else {
-            next();
-        }
-    });
+exports.view = function (req, res, next) {
+  res.redirect('/');
 };
 
-exports.save = function(req, res, next) {
-    var id = req.params.id;
-    var title = req.body.title || '';
-    title = title.trim();
-    if(!title) {
-        return res.render('error', {message: '标题是必须的'});
+exports.edit = function (req, res, next) {
+  var id = req.params.id;
+  db.todo.findById(id, function (err, row) {
+    if (err) {
+      return next(err);
     }
-    db.query('update todo set title=? where id=?', [title, id], function(err, result) {
-        if(err) return next(err);
-        res.redirect('/');
-    });
+    if (!row) {
+      return next();
+    }
+    res.render('todo/edit.html', {todo: row});
+  });
 };
 
-exports.delete = function(req, res, next) {
-    var id = req.params.id;
-    db.query('delete from todo where id = ?', [id], function(err) {
-        if(err) return next(err);
-        res.redirect('/');
-    });
+exports.save = function (req, res, next) {
+  var id = req.params.id;
+  var title = req.body.title || '';
+  title = title.trim();
+  if (!title) {
+    return res.render('error.html', {message: '标题是必须的'});
+  }
+  db.todo.updateById(id, {$set: {title: title}}, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
 };
 
-exports.finish = function(req, res, next) {
-    var finished = req.query.status === 'yes' ? 1 : 0;
-    var id = req.params.id;
-    db.query('update todo set finished=? where id=?', [finished, id], function(err, result) {
-        if(err) return next(err);
-        res.redirect('/');
-    });
+exports.delete = function (req, res, next) {
+  var id = req.params.id;
+  db.todo.removeById(id, function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+};
+
+exports.finish = function (req, res, next) {
+  var finished = req.query.status === 'yes' ? 1 : 0;
+  var id = req.params.id;
+  db.todo.updateById(id, {$set: {finished: finished}}, function (err, result) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
 };
