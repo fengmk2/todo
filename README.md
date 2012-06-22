@@ -18,7 +18,7 @@ $ node server.js
     
 ## Demo
 
-[http://todo.cnodejs.net](todo.cnodejs.net)
+[http://hello.cnodejs.net/](http://hello.cnodejs.net/)
 
 ## Test
 
